@@ -1,0 +1,83 @@
+//
+//  PaymentButton.swift
+//  FurnitureApp
+//
+//  Created by Мария Лях on 12.07.2025.
+//
+
+//import SwiftUI
+//import PassKit
+//
+//struct PaymentButton: View {
+//    var action: () -> Void
+//    var body: some View {
+//       Representable(action: action)
+//    }
+//}
+//
+//#Preview {
+//    PaymentButton(action:{})
+//        .frame(minWidth:100, maxHeight: 400)
+//        .frame(height: 45)
+//        .frame(maxWidth: .infinity)
+//}
+//
+//extension PaymentButton{
+//    struct Representable: UIViewRepresentable {
+//        var action: () -> Void
+//        
+//        func makeCoordinator() -> Coordinator {
+//            Coordinator(action: action)
+//        }
+//        
+//        func makeUIView(context: Context) -> some UIView {
+//            context.coordinator.button
+//            
+//        }
+//        
+//        func updateUIView(_ uiView: UIViewType, context: Context) {
+//            context.coordinator.action = action
+//        }
+//    }
+//    class Coordinator: NSObject {
+//        var action: () -> Void
+//        var button = PKPaymentButton(paymentButtonType: .continue, paymentButtonStyle: .automatic)
+//        
+//        init(action: @escaping () -> Void) {
+//            self.action = action
+//            super.init()
+//            
+//            button.addTarget(self, action: #selector(callback(_:)), for: .touchUpInside)
+//            
+//        }
+//        @objc
+//        func callback(_ sender: Any) {
+//            action()
+//        }
+//    }
+//}
+//
+
+
+import SwiftUI
+
+struct PaymentButton: View {
+    var action: () -> Void
+    
+    var body: some View {
+        Button(action: action) {
+            Text("Оплатить")
+                .font(.headline)
+                .foregroundColor(.white)
+                .frame(maxWidth: .infinity)
+                .frame(height: 45)
+                .background(Color("kPrimary"))
+                .cornerRadius(10)
+        }
+    }
+}
+
+#Preview {
+    PaymentButton(action: {})
+        .padding()
+}
